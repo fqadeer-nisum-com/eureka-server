@@ -1,0 +1,16 @@
+@Library('jenkins_shared_libraries_git') _
+
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                //Load gradle command and arguments from file config/gradle.groovy
+                load "config/gradle.groovy"
+                ExecuteGradle ("${gradleCmd} ${gradleArgs}")
+            }
+        }
+
+    }
+}
